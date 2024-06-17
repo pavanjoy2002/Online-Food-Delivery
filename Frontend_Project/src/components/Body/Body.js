@@ -1,7 +1,6 @@
 import React from 'react';
 import RestaurantCards from './RestaurantCards';
-import Carousel from './Carousel';
-import CategorySlide from './CategoriesSlide';
+import { CategorySlide, Carousel } from '../Home/HomePage';
 
 const SearchBox = () => {
     return(
