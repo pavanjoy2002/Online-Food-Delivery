@@ -6,4 +6,6 @@ import com.pack.ofd.model.Restaurant;
 
 public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>{
 
+	Restaurant findRestaurantByEmailIdAndPassword(String emailId, String password);
+
 }
