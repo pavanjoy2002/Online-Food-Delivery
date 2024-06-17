@@ -1,17 +1,23 @@
-import { useRouteError } from "react-router-dom";
+// Error.js
 
-const Error = () => {
-  const err = useRouteError();
-  console.log(err);
+import React from 'react';
+
+const Error = ({ error }) => {
   return (
-    <>
-      <h1>Oops!!!</h1>
-      <h2> Something went wrong!!</h2>
-      <h3>
-        {err.status}: {err.statusText}
-      </h3>
-    </>
+    <div className="container border rounded my-5 py-5 shadow text-center" style={{ height: "auto", width: "720px" }}>
+      <h1 className="text-danger">Oops!!!</h1>
+      <h2>Something went wrong!!</h2>
+      {error && (
+        <>
+          <h3>
+            {error.status}: {error.statusText}
+          </h3>
+          <h3>{error.message}</h3>
+        </>
+      )}
+    </div>
   );
 };
 
 export default Error;
+
