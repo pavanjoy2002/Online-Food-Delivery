@@ -13,6 +13,7 @@ public class OrderItem {
 	private int orderId;
 	private int foodId;
 	private int quantity;
+	private String foodImgUrl;
 	
 	public int getItemId() {
 		return itemId;
@@ -37,6 +38,12 @@ public class OrderItem {
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	public String getFoodImgUrl() {
+		return foodImgUrl;
+	}
+	public void setFoodImgUrl(String foodImgUrl) {
+		this.foodImgUrl = foodImgUrl;
 	}
 	
 }
