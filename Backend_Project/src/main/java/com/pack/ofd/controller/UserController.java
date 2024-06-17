@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pack.ofd.dao.OnlineFoodDeliveryDAO;
+import com.pack.ofd.exception.UserNotFoundException;
 import com.pack.ofd.model.User;
 import com.pack.ofd.repository.UserRepository;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:1234")
 public class UserController {
 
 	@Autowired
@@ -37,10 +40,9 @@ public class UserController {
 		return userRepository.findAll();
 	}
 	
-//	@PostMapping("/login")
-//	public ResponseEntity<User> verifyUserToLogin( String email, String password ){
-//		OnlineFoodDeliveryDAO dao = new OnlineFoodDeliveryDAO();
-//		dao.validatingUser(email, password);
-//		return ResponseEntity<User>
-//	}
+	@GetMapping("/user/{id}")
+	User getUserById(@PathVariable int id) {
+		return userRepository.findById(id)
+				.orElseThrow(()->new UserNotFoundException(id));
+	}
 }
